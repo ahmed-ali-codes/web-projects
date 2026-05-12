@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Menu — Coffies</title>
+<meta name="description" content="Coffies - Premium handcrafted coffee experience."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body data-page="menu"><nav id="navbar" class="scrolled">
+  <a href="index.html" class="logo-text">Coff<span>ies</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="menu.html" class="active">Menu</a></li>
+    <li><a href="about.html">About</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right"><button class="cart-nav-btn" onclick="openCart()">🛒<span class="cart-badge" id="cartBadge">0</span></button></div>
+</nav>
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header"><h3>🛒 Your Order</h3><button class="cart-close" onclick="closeCart()">✕</button></div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty"><span class="cart-empty-icon">☕</span><p>Your cart is empty.<br/>Add some coffee to get started!</p></div>
+  </div>
+  <div class="cart-footer" id="cartFooter">
+    <div id="cartProgress" class="cart-shipping-msg"></div>
+    <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+    <div class="cart-subtotal"><span>Shipping</span><span id="cartShipping" style="color:#4caf50">Free</span></div>
+    <div class="cart-total"><span>Total</span><span class="cart-total-price" id="cartTotal">$0.00</span></div>
+    <button class="checkout-btn" onclick="window.location.href='checkout.html'">Proceed to Checkout →</button>
+  </div>
+</div>
+<div class="toast" id="toast"><div class="toast-icon">✓</div><span id="toastMsg"></span></div>
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1800&q=90')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content"><span class="section-label">What We Serve</span><h1>Our Full Menu</h1><p>Every item is crafted with intention, sourced with care, and served with pride.</p></div>
+</section>
+<section class="menu-section">
+  <div class="filter-tabs">
+    <button class="filter-btn active" onclick="filterMenu('all',this)">All</button>
+    <button class="filter-btn" onclick="filterMenu('espresso',this)">Espresso</button>
+    <button class="filter-btn" onclick="filterMenu('latte',this)">Lattes</button>
+    <button class="filter-btn" onclick="filterMenu('cold',this)">Cold Brew</button>
+    <button class="filter-btn" onclick="filterMenu('beans',this)">Whole Beans</button>
+    <button class="filter-btn" onclick="filterMenu('gift',this)">Gift Sets</button>
+  </div>
+  <div class="products-grid menu-grid" id="menuGrid">
+    <div class="product-card reveal" data-cat="espresso"><div class="product-img"><img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=600&q=85" alt="Espresso" loading="lazy"/><div class="product-tag">Best Seller</div></div><div class="product-body"><div class="product-name">Espresso Intenso</div><div class="product-origin">Ethiopian Yirgacheffe · Dark Roast</div><p class="product-desc-text">Bold and powerful with notes of dark chocolate and smoky undertones.</p><div class="product-bottom"><div class="product-price">$5.50</div><button class="cart-btn" onclick="addToCart('Espresso Intenso','Ethiopian Yirgacheffe · Dark Roast',5.50,'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=200&q=80',this)">+</button></div></div></div>
+    <div class="product-card reveal" data-cat="espresso"><div class="product-img"><img src="https://images.unsplash.com/photo-1574914629385-46448b209e6a?w=600&q=85" alt="Ristretto" loading="lazy"/><div class="product-tag">Signature</div></div><div class="product-body"><div class="product-name">Double Shot Ristretto</div><div class="product-origin">Brazil Cerrado · Extra Dark</div><p class="product-desc-text">Concentrated and velvety with rich crema and deep caramel finish.</p><div class="product-bottom"><div class="product-price">$6.00</div><button class="cart-btn" onclick="addToCart('Double Shot Ristretto','Brazil Cerrado · Extra Dark',6.00,'https://images.unsplash.com/photo-1574914629385-46448b209e6a?w=200&q=80',this)">+</button></div></div></div>
+    <div class="product-card reveal" data-cat="espresso"><div class="product-img"><img src="https://images.unsplash.com/photo-1533566992247-56db9d553f7a?w=600&q=85" alt="Lungo" loading="lazy"/></div><div class="product-body"><div class="product-name">Classic Lungo</div><div class="product-origin">Kenya AA · Medium-Dark</div><p class="product-desc-text">Smooth and long with wine-like acidity and blackcurrant sweetness.</p><div class="product-bottom"><div class="product-price">$5.00</div><button class="cart-btn" onclick="addToCart('Classic Lungo','Kenya AA · Medium-Dark',5.00,'https://images.unsplash.com/photo-1533566992247-56db9d553f7a?w=200&q=80',this)">+</button></div></div></div>
+    <div class="product-card reveal" data-cat="latte"><div class="product-img"><img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&q=85" alt="Latte" loading="lazy"/><div class="product-tag">Staff Pick</div></div><div class="product-body"><div class="product-name">Velvet Latte</div><div class="product-origin">Colombian Huila · Medium Roast</div><p class="product-desc-text">Silky microfoam layered over our Colombian espresso with vanilla undertones.</p><div class="product-bottom"><div class="product-price">$6.00</div><button class="cart-btn" onclick="addToCart('Velvet Latte','Colombian Huila · Medium Roast',6.00,'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=200&q=80',this)">+</button></div></div></div>
+    <div class="product-card reveal" data-cat="latte"><div class="product-img"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=85" alt="Cappuccino" loading="lazy"/></div><div class="product-body"><div class="product-name">Airy Cappuccino</div><div class="product-origin">Italian Blend · Medium</div><p class="product-desc-text">Equal parts espresso, steamed milk, and cloud-like foam. Classic Italian-style.</p><div class="product-bottom"><div class="product-price">$5.50</div><button class="cart-btn" onclick="addToCart('Airy Cappuccino','Italian Blend · Medium',5.50,'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=200&q=80',this)">+</button></div></div></div>
+    <div class="product-card reveal" data-cat="latte"><div class="product-img"><img src="https://images.unsplash.com/photo-1485808191679-5f86510bd9d4?w=600&q=85" alt="Flat White" loading="lazy"/></div><div class="product-body"><div class="product-name">Flat White</div><div class="product-origin">Australian Blend · Medium</div><p class="product-desc-text">Stronger than a latte, smaller than a cappuccino. Double ristretto with velvety milk.</p><div class="product-bottom"><div class="product-price">$5.50</div><button class="cart-btn" onclick="addToCart('Flat White','Australian Blend · Medium',5.50,'https://images.unsplash.com/photo-1485808191679-5f86510bd9d4?w=200&q=80',this)">+</button></div></div></div>
+    <div class="product-card reveal" data-cat="cold"><div class="product-img"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=85" alt="Cold Brew" loading="lazy"/><div class="product-tag">Summer Hit</div></div><div class="product-body"><div class="product-name">Cold Brew Noir</div><div class="product-origin">Guatemala Antigua · Slow Steeped</div><p class="product-desc-text">18-hour cold steeped. Naturally sweet, remarkably smooth, zero bitterness.</p><div class="product-bottom"><div class="product-price">$6.50</div><button class="cart-btn" onclick="addToCart('Cold Brew Noir','Guatemala Antigua · Slow Steeped',6.50,'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=200&q=80',this)">+</button></div></div></div>
+    <div class="product-card reveal" data-cat="cold"><div class="product-img"><img src="https://images.unsplash.com/photo-1549049950-48d5887197a0?w=600&q=85" alt="Nitro" loading="lazy"/><div class="product-tag">New</div></div><div class="product-body"><div class="product-name">Nitro Cascade</div><div class="product-origin">Honduras SHG · Nitrogen Infused</div><p class="product-desc-text">Cold brew charged with nitrogen for a creamy, stout-like pour.</p><div class="product-bottom"><div class="product-price">$7.50</div><button class="cart-btn" onclick="addToCart('Nitro Cascade','Honduras SHG · Nitrogen Infused',7.50,'https://images.unsplash.com/photo-1549049950-48d5887197a0?w=200&q=80',this)">+</button></div></div></div>
+    <div class="product-card reveal" data-cat="beans"><div class="product-img"><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600&q=85" alt="Beans" loading="lazy"/><div class="product-tag">New Arrival</div></div><div class="product-body"><div class="product-name">Reserve Whole Beans</div><div class="product-origin">Panama Geisha · Light Roast</div><p class="product-desc-text">Floral, tea-like and utterly unique. The world's most celebrated coffee variety.</p><div class="product-bottom"><div class="product-price">$18.00</div><button class="cart-btn" onclick="addToCart('Reserve Whole Beans','Panama Geisha · Light Roast',18.00,'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=200&q=80',this)">+</button></div></div></div>
+    <div class="product-card reveal" data-cat="beans"><div class="product-img"><img src="https://images.unsplash.com/photo-1596078843892-0b98f7b3748c?w=600&q=85" alt="Dark Beans" loading="lazy"/></div><div class="product-body"><div class="product-name">Midnight Roast Beans</div><div class="product-origin">Sumatra Mandheling · Dark</div><p class="product-desc-text">Earthy, full-bodied with a long chocolatey finish. Perfect for French press.</p><div class="product-bottom"><div class="product-price">$14.00</div><button class="cart-btn" onclick="addToCart('Midnight Roast Beans','Sumatra Mandheling · Dark',14.00,'https://images.unsplash.com/photo-1596078843892-0b98f7b3748c?w=200&q=80',this)">+</button></div></div></div>
+    <div class="product-card reveal" data-cat="gift"><div class="product-img"><img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&q=85" alt="Gift Set" loading="lazy"/><div class="product-tag">Popular Gift</div></div><div class="product-body"><div class="product-name">The Connoisseur Box</div><div class="product-origin">3 Premium Blends · Gift Boxed</div><p class="product-desc-text">Three finest single-origin selections beautifully packaged. The ultimate gift.</p><div class="product-bottom"><div class="product-price">$45.00</div><button class="cart-btn" onclick="addToCart('The Connoisseur Box','3 Premium Blends · Gift Boxed',45.00,'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=200&q=80',this)">+</button></div></div></div>
+    <div class="product-card reveal" data-cat="gift"><div class="product-img"><img src="https://images.unsplash.com/photo-1516743619420-154b70a65fea?w=600&q=85" alt="Starter Kit" loading="lazy"/></div><div class="product-body"><div class="product-name">Brew Starter Kit</div><div class="product-origin">Beans + Tools + Guide</div><p class="product-desc-text">Everything to brew like a pro at home. Beans, pour-over dripper and brewing guide.</p><div class="product-bottom"><div class="product-price">$65.00</div><button class="cart-btn" onclick="addToCart('Brew Starter Kit','Beans + Tools + Guide',65.00,'https://images.unsplash.com/photo-1516743619420-154b70a65fea?w=200&q=80',this)">+</button></div></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo-text">Coff<span>ies</span></a>
+      <p>Premium specialty coffee sourced from ethical farms. Roasted fresh and shipped within 72 hours of roasting.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#">f</a><a class="social-btn" href="#">in</a><a class="social-btn" href="#">tw</a><a class="social-btn" href="#">yt</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Shop</h4><ul>
+      <li><a href="menu.html">Espressos</a></li><li><a href="menu.html">Lattes</a></li>
+      <li><a href="menu.html">Cold Brews</a></li><li><a href="menu.html">Whole Beans</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="about.html">Our Story</a></li><li><a href="about.html">Sustainability</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul>
+      <li>📍 123 Roastery Lane</li><li>📞 +1 (555) 123-4567</li>
+      <li>✉️ hello@coffies.com</li><li>⏰ Mon–Sat 8am–6pm</li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 <span style="color:var(--gold)">Coffies</span>. All rights reserved.</span>
+    <span>Privacy · Terms · Cookies</span>
+  </div>
+</footer>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+function filterMenu(cat,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#menuGrid .product-card').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'block':'none';
+  });
+}
+</script>
+</body></html>

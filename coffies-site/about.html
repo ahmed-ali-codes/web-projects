@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Our Story — Coffies</title>
+<meta name="description" content="Coffies - Premium handcrafted coffee experience."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body data-page="about"><nav id="navbar" class="scrolled">
+  <a href="index.html" class="logo-text">Coff<span>ies</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html" class="active">About</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right"><button class="cart-nav-btn" onclick="openCart()">🛒<span class="cart-badge" id="cartBadge">0</span></button></div>
+</nav>
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header"><h3>🛒 Your Order</h3><button class="cart-close" onclick="closeCart()">✕</button></div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty"><span class="cart-empty-icon">☕</span><p>Your cart is empty.<br/>Add some coffee to get started!</p></div>
+  </div>
+  <div class="cart-footer" id="cartFooter">
+    <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+    <div class="cart-subtotal"><span>Shipping</span><span style="color:#4caf50">Free</span></div>
+    <div class="cart-total"><span>Total</span><span class="cart-total-price" id="cartTotal">$0.00</span></div>
+    <button class="checkout-btn" onclick="window.location.href='checkout.html'">Proceed to Checkout →</button>
+  </div>
+</div>
+<div class="toast" id="toast"><div class="toast-icon">✓</div><span id="toastMsg"></span></div>
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1800&q=90')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content"><span class="section-label">Who We Are</span><h1>The Coffies Story</h1><p>A passion project born from one obsession: the perfect cup of coffee.</p></div>
+</section>
+<section class="about-story">
+  <div class="about-story-grid">
+    <div class="about-story-img reveal-left"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=900&q=85" alt="Coffee roasting"/></div>
+    <div class="about-story-text reveal-right">
+      <span class="section-label">How It Started</span>
+      <h2 class="section-title">From a Single Cup to a Global Mission</h2>
+      <p>In 2018, our founder Maria Chen returned from a trip to Ethiopia with a small bag of hand-picked Yirgacheffe beans and an idea: what if specialty coffee didn't have to be complicated, expensive, or exclusive?</p>
+      <p>She started Coffies from her kitchen table — roasting small batches, learning every variable, and sharing cups with neighbours. Word spread. Orders came. The kitchen became a roastery. The roastery became a movement.</p>
+      <p>Today, Coffies works directly with over 30 farms across 12 countries, employing fair-trade practices and investing in the communities that grow our beans.</p>
+    </div>
+  </div>
+</section>
+<section class="values-section">
+  <div class="section-center"><span class="section-label reveal">What Drives Us</span><h2 class="section-title reveal">Our Core Values</h2></div>
+  <div class="values-grid">
+    <div class="value-card reveal"><div class="value-icon">🌱</div><h3>Sustainability</h3><p>Carbon-neutral roastery, compostable packaging, and direct investment in reforestation programs.</p></div>
+    <div class="value-card reveal"><div class="value-icon">🤝</div><h3>Fair Trade</h3><p>We pay above-market rates to every farm partner. When farmers thrive, quality improves.</p></div>
+    <div class="value-card reveal"><div class="value-icon">🔬</div><h3>Precision</h3><p>Every roast is monitored by data and refined by palate. We cup every batch before it ships.</p></div>
+    <div class="value-card reveal"><div class="value-icon">❤️</div><h3>Community</h3><p>From our online coffee club to local pop-ups, we're building a global community of coffee lovers.</p></div>
+  </div>
+</section>
+<section class="process">
+  <div class="section-center"><span class="section-label reveal">From Seed to Cup</span><h2 class="section-title reveal" style="margin:0 auto">Our Four-Step Journey</h2></div>
+  <div class="process-grid">
+    <div class="process-step reveal"><div class="step-icon"><img src="https://images.unsplash.com/photo-1585631664614-f1f29c7370ec?w=200&q=80" alt="Source" loading="lazy"/></div><div class="step-num">01</div><div class="step-title">Source</div><div class="step-desc">We personally visit farms and select only the top 1% of harvested cherries each season.</div></div>
+    <div class="process-step reveal"><div class="step-icon"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=200&q=80" alt="Roast" loading="lazy"/></div><div class="step-num">02</div><div class="step-title">Roast</div><div class="step-desc">Master roasters unlock complex flavour profiles through precise temperature control.</div></div>
+    <div class="process-step reveal"><div class="step-icon"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=200&q=80" alt="Blend" loading="lazy"/></div><div class="step-num">03</div><div class="step-title">Blend</div><div class="step-desc">Origins are combined into signature blends designed for any brew method.</div></div>
+    <div class="process-step reveal"><div class="step-icon"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&q=80" alt="Brew" loading="lazy"/></div><div class="step-num">04</div><div class="step-title">Brew</div><div class="step-desc">Each bag ships with roast date and tasting notes for a perfectly brewed cup every time.</div></div>
+  </div>
+</section>
+<section class="team-section">
+  <div class="section-center"><span class="section-label reveal">The People Behind the Beans</span><h2 class="section-title reveal">Meet Our Team</h2></div>
+  <div class="team-grid">
+    <div class="team-card reveal"><div class="team-img"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80" alt="Maria"/></div><div class="team-body"><h3>Maria Chen</h3><span>Founder & Head Roaster</span><p>"Coffee is love made liquid."</p></div></div>
+    <div class="team-card reveal"><div class="team-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="James"/></div><div class="team-body"><h3>James Mitchell</h3><span>Head of Sourcing</span><p>"The best coffee starts with the best relationships."</p></div></div>
+    <div class="team-card reveal"><div class="team-img"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="Marco"/></div><div class="team-body"><h3>Marco Romano</h3><span>Master Barista & Trainer</span><p>"Every extraction is a chance to learn something new."</p></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo-text">Coff<span>ies</span></a>
+      <p>Premium specialty coffee sourced from ethical farms. Roasted fresh and shipped within 72 hours of roasting.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#">f</a><a class="social-btn" href="#">in</a><a class="social-btn" href="#">tw</a><a class="social-btn" href="#">yt</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Shop</h4><ul>
+      <li><a href="menu.html">Espressos</a></li><li><a href="menu.html">Lattes</a></li>
+      <li><a href="menu.html">Cold Brews</a></li><li><a href="menu.html">Whole Beans</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="about.html">Our Story</a></li><li><a href="about.html">Sustainability</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul>
+      <li>📍 123 Roastery Lane</li><li>📞 +1 (555) 123-4567</li>
+      <li>✉️ hello@coffies.com</li><li>⏰ Mon–Sat 8am–6pm</li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 <span style="color:var(--gold)">Coffies</span>. All rights reserved.</span>
+    <span>Privacy · Terms · Cookies</span>
+  </div>
+</footer>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+</body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gallery — Coffies</title>
+<meta name="description" content="Coffies - Premium handcrafted coffee experience."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body data-page="gallery"><nav id="navbar" class="scrolled">
+  <a href="index.html" class="logo-text">Coff<span>ies</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About</a></li><li><a href="gallery.html" class="active">Gallery</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right"><button class="cart-nav-btn" onclick="openCart()">🛒<span class="cart-badge" id="cartBadge">0</span></button></div>
+</nav>
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header"><h3>🛒 Your Order</h3><button class="cart-close" onclick="closeCart()">✕</button></div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty"><span class="cart-empty-icon">☕</span><p>Your cart is empty.<br/>Add some coffee to get started!</p></div>
+  </div>
+  <div class="cart-footer" id="cartFooter">
+    <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+    <div class="cart-subtotal"><span>Shipping</span><span style="color:#4caf50">Free</span></div>
+    <div class="cart-total"><span>Total</span><span class="cart-total-price" id="cartTotal">$0.00</span></div>
+    <button class="checkout-btn" onclick="window.location.href='checkout.html'">Proceed to Checkout →</button>
+  </div>
+</div>
+<div class="toast" id="toast"><div class="toast-icon">✓</div><span id="toastMsg"></span></div>
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1800&q=90')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content"><span class="section-label">Visual Stories</span><h1>Life Through Coffee</h1><p>Moments, moods, and the magic that happens between roast and sip.</p></div>
+</section>
+<section class="gallery-page">
+  <div class="section-center" style="margin-bottom:3rem"><span class="section-label reveal">Our World</span><h2 class="section-title reveal">The Coffies Gallery</h2></div>
+  <div class="gallery-full-grid">
+    <div class="gal-item gal-tall reveal"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=85" alt="Coffee atmosphere" loading="lazy"/></div>
+    <div class="gal-item reveal"><img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=700&q=85" alt="Espresso" loading="lazy"/></div>
+    <div class="gal-item reveal"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=700&q=85" alt="Latte art" loading="lazy"/></div>
+    <div class="gal-item reveal"><img src="https://images.unsplash.com/photo-1596078843892-0b98f7b3748c?w=700&q=85" alt="Coffee beans" loading="lazy"/></div>
+    <div class="gal-item gal-wide reveal"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1000&q=85" alt="Coffee shop" loading="lazy"/></div>
+    <div class="gal-item reveal"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=700&q=85" alt="Roasting" loading="lazy"/></div>
+    <div class="gal-item reveal"><img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=700&q=85" alt="Espresso cup" loading="lazy"/></div>
+    <div class="gal-item reveal"><img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?w=700&q=85" alt="Latte" loading="lazy"/></div>
+    <div class="gal-item gal-tall reveal"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=700&q=85" alt="Cold brew" loading="lazy"/></div>
+    <div class="gal-item reveal"><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=700&q=85" alt="Beans bag" loading="lazy"/></div>
+    <div class="gal-item reveal"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=700&q=85" alt="Cappuccino" loading="lazy"/></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo-text">Coff<span>ies</span></a>
+      <p>Premium specialty coffee sourced from ethical farms. Roasted fresh and shipped within 72 hours of roasting.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#">f</a><a class="social-btn" href="#">in</a><a class="social-btn" href="#">tw</a><a class="social-btn" href="#">yt</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Shop</h4><ul>
+      <li><a href="menu.html">Espressos</a></li><li><a href="menu.html">Lattes</a></li>
+      <li><a href="menu.html">Cold Brews</a></li><li><a href="menu.html">Whole Beans</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="about.html">Our Story</a></li><li><a href="about.html">Sustainability</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul>
+      <li>📍 123 Roastery Lane</li><li>📞 +1 (555) 123-4567</li>
+      <li>✉️ hello@coffies.com</li><li>⏰ Mon–Sat 8am–6pm</li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 <span style="color:var(--gold)">Coffies</span>. All rights reserved.</span>
+    <span>Privacy · Terms · Cookies</span>
+  </div>
+</footer>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+</body></html>

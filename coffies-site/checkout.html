@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Checkout — Coffies</title>
+<meta name="description" content="Coffies - Premium handcrafted coffee experience."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body data-page="checkout"><nav id="navbar" class="scrolled">
+  <a href="index.html" class="logo-text">Coff<span>ies</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right"><a href="menu.html" class="btn-gold" style="font-size:.85rem;padding:.6rem 1.4rem">← Keep Shopping</a></div>
+</nav>
+<div class="toast" id="toast"><div class="toast-icon">✓</div><span id="toastMsg"></span></div>
+<section class="checkout-page">
+  <div class="checkout-success" id="checkoutSuccess" style="display:none">
+    <div class="success-icon-lg" style="background:linear-gradient(135deg,#4caf50,#66bb6a)">✓</div>
+    <h2>Order Confirmed!</h2>
+    <p id="successMsg">Your premium Coffies selection is being prepared. Roasted fresh and shipped within 72 hours.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem">
+      <a href="index.html" class="btn-gold">Back to Home</a>
+      <a href="menu.html" class="btn-outline" style="color:var(--choc);border-color:var(--choc)">Shop More Coffee</a>
+    </div>
+  </div>
+  <div id="checkoutContent">
+    <div class="checkout-header"><span class="section-label">Almost There</span><h1 class="section-title">Complete Your Order</h1></div>
+    <div class="checkout-grid">
+      <div class="checkout-form-col">
+        <div class="checkout-card">
+          <h3 class="checkout-card-title">Personal Details</h3>
+          <div class="form-row">
+            <div class="form-group"><label>First Name *</label><input type="text" id="firstName" placeholder="John"/></div>
+            <div class="form-group"><label>Last Name *</label><input type="text" id="lastName" placeholder="Doe"/></div>
+          </div>
+          <div class="form-group"><label>Email Address *</label><input type="email" id="email" placeholder="john@example.com"/></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="phone" placeholder="+1 (555) 000-0000"/></div>
+        </div>
+        <div class="checkout-card">
+          <h3 class="checkout-card-title">Delivery Address</h3>
+          <div class="form-group"><label>Street Address *</label><input type="text" id="address" placeholder="123 Coffee Street"/></div>
+          <div class="form-row">
+            <div class="form-group"><label>City *</label><input type="text" id="city" placeholder="New York"/></div>
+            <div class="form-group"><label>ZIP / Postal Code *</label><input type="text" id="zip" placeholder="10001"/></div>
+          </div>
+          <div class="form-group"><label>Country *</label>
+            <select id="country"><option value="">Select country…</option><option>United States</option><option>United Kingdom</option><option>Canada</option><option>Australia</option><option>United Arab Emirates</option><option>Germany</option><option>France</option><option>Italy</option><option>Other</option></select>
+          </div>
+        </div>
+        <div class="checkout-card">
+          <h3 class="checkout-card-title">Payment Details</h3>
+          <div class="form-group"><label>Name on Card *</label><input type="text" id="cardName" placeholder="John Doe"/></div>
+          <div class="form-group"><label>Card Number *</label><input type="text" id="cardNum" placeholder="1234 5678 9012 3456" maxlength="19"/></div>
+          <div class="form-row">
+            <div class="form-group"><label>Expiry Date *</label><input type="text" id="expiry" placeholder="MM / YY" maxlength="7"/></div>
+            <div class="form-group"><label>CVV *</label><input type="text" id="cvv" placeholder="123" maxlength="3"/></div>
+          </div>
+          <div class="form-group"><label>Special Instructions</label><textarea id="notes" rows="3" placeholder="Grind preference, delivery notes…"></textarea></div>
+        </div>
+        <button class="submit-btn" id="placeOrderBtn" onclick="placeOrder()">🎉 Place My Order</button>
+      </div>
+      <div class="checkout-summary-col">
+        <div class="checkout-card sticky-summary">
+          <h3 class="checkout-card-title">Order Summary</h3>
+          <div id="summaryItems" class="summary-items-list">
+            <div style="text-align:center;padding:2rem;color:var(--choc3)"><p>Your cart is empty.</p><a href="menu.html" class="btn-gold" style="display:inline-block;margin-top:1rem;font-size:.85rem">Browse Menu</a></div>
+          </div>
+          <div class="summary-divider"></div>
+          <div class="summary-row"><span>Subtotal</span><span id="summarySubtotal">$0.00</span></div>
+          <div class="summary-row"><span>Estimated Tax (8%)</span><span id="summaryTax">$0.00</span></div>
+          <div class="summary-row"><span>Shipping</span><span id="summaryShipping" style="color:#4caf50">Free</span></div>
+          <div class="summary-divider"></div>
+          <div class="summary-row summary-total-row"><span>Total</span><span id="summaryTotal" style="color:var(--gold)">$0.00</span></div>
+          <div class="checkout-trust">
+            <div class="trust-item">🔒 Secure SSL Checkout</div>
+            <div class="trust-item">📦 Free Shipping Over $40</div>
+            <div class="trust-item">🔄 Easy 30-Day Returns</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo-text">Coff<span>ies</span></a>
+      <p>Premium specialty coffee sourced from ethical farms. Roasted fresh and shipped within 72 hours of roasting.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#">f</a><a class="social-btn" href="#">in</a><a class="social-btn" href="#">tw</a><a class="social-btn" href="#">yt</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Shop</h4><ul>
+      <li><a href="menu.html">Espressos</a></li><li><a href="menu.html">Lattes</a></li>
+      <li><a href="menu.html">Cold Brews</a></li><li><a href="menu.html">Whole Beans</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="about.html">Our Story</a></li><li><a href="about.html">Sustainability</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul>
+      <li>📍 123 Roastery Lane</li><li>📞 +1 (555) 123-4567</li>
+      <li>✉️ hello@coffies.com</li><li>⏰ Mon–Sat 8am–6pm</li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 <span style="color:var(--gold)">Coffies</span>. All rights reserved.</span>
+    <span>Privacy · Terms · Cookies</span>
+  </div>
+</footer>
+<script src="js/cart.js"></script>
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script>
+/**
+ * Professional Checkout Controller
+ */
+function populateSummary() {
+  const cart = cartManager.cart;
+  const totals = cartManager.getTotals();
+  
+  const si = document.getElementById('summaryItems');
+  const subEl = document.getElementById('summarySubtotal');
+  const taxEl = document.getElementById('summaryTax');
+  const shipEl = document.getElementById('summaryShipping');
+  const totalEl = document.getElementById('summaryTotal');
+  const btn = document.getElementById('placeOrderBtn');
+
+  if (!cart || cart.length === 0) {
+    si.innerHTML = `
+      <div class="empty-summary">
+        <p>Your cart is empty.</p>
+        <a href="menu.html" class="btn-gold" style="display:inline-block;margin-top:1rem;font-size:.85rem">Browse Menu</a>
+      </div>`;
+    if (subEl) subEl.textContent = '$0.00';
+    if (totalEl) totalEl.textContent = '$0.00';
+    if (btn) btn.disabled = true;
+    return;
+  }
+
+  // Render Items
+  si.innerHTML = cart.map(i => `
+    <div class="summary-item-row">
+      <img src="${i.img}" alt="${i.name}" class="summary-item-img"/>
+      <div class="summary-item-info">
+        <span class="summary-item-name">${i.name}</span>
+        <span class="summary-item-qty">Qty: ${i.qty}</span>
+      </div>
+      <span class="summary-item-price">$${(i.price * i.qty).toFixed(2)}</span>
+    </div>
+  `).join('');
+
+  // Update Totals
+  if (subEl) subEl.textContent = `$${totals.subtotal}`;
+  if (taxEl) taxEl.textContent = `$${totals.tax}`;
+  if (shipEl) shipEl.textContent = totals.shipping === "0.00" ? 'FREE' : `$${totals.shipping}`;
+  if (totalEl) totalEl.textContent = `$${totals.total}`;
+  if (btn) btn.disabled = false;
+}
+
+/**
+ * Production-Level Order Placement
+ */
+async function placeOrder() {
+  const btn = document.getElementById('placeOrderBtn');
+  const fields = [
+    { id: 'firstName', name: 'First Name' },
+    { id: 'lastName', name: 'Last Name' },
+    { id: 'email', name: 'Email' },
+    { id: 'address', name: 'Address' },
+    { id: 'city', name: 'City' },
+    { id: 'zip', name: 'ZIP Code' },
+    { id: 'country', name: 'Country' },
+    { id: 'cardName', name: 'Name on Card' },
+    { id: 'cardNum', name: 'Card Number' },
+    { id: 'expiry', name: 'Expiry Date' },
+    { id: 'cvv', name: 'CVV' }
+  ];
+
+  // 1. Validation
+  for (const field of fields) {
+    const el = document.getElementById(field.id);
+    if (!el || !el.value.trim()) {
+      el?.focus();
+      showToast(`⚠️ Please enter your ${field.name}`);
+      return;
+    }
+  }
+
+  const emailEl = document.getElementById('email');
+  if (!/^\S+@\S+\.\S+$/.test(emailEl.value)) {
+    emailEl.focus();
+    showToast('⚠️ Please enter a valid email address');
+    return;
+  }
+
+  // 2. Loading State
+  const originalText = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="loader"></span> Processing...';
+
+  try {
+    const orderData = {
+      customer: {
+        name: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
+        email: emailEl.value,
+        phone: document.getElementById('phone').value
+      },
+      shipping: {
+        address: document.getElementById('address').value,
+        city: document.getElementById('city').value,
+        zip: document.getElementById('zip').value,
+        country: document.getElementById('country').value
+      },
+      items: cartManager.cart,
+      totals: cartManager.getTotals()
+    };
+
+    // 3. API Call (Mocked)
+    const order = await window.CoffiesAPI.processOrder(orderData);
+
+    // 4. Success Handling
+    cartManager.clearCart();
+    document.getElementById('checkoutContent').style.display = 'none';
+    document.getElementById('checkoutSuccess').style.display = 'block';
+    document.getElementById('successMsg').innerHTML = `
+      Thank you, <strong>${order.customer.name}</strong>!<br>
+      Your order <strong>${order.id}</strong> has been received.<br>
+      A confirmation email was sent to <i>${order.customer.email}</i>.
+    `;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  } catch (error) {
+    showToast(`❌ Error: ${error.message}`);
+    btn.disabled = false;
+    btn.innerHTML = originalText;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  cartManager.subscribe(populateSummary);
+  
+  // Formatters
+  const formatInput = (id, regex, formatFn) => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', function() {
+      this.value = formatFn(this.value.replace(regex, ''));
+    });
+  };
+
+  formatInput('cardNum', /\D/g, v => v.replace(/(.{4})/g, '$1 ').trim().slice(0, 19));
+  formatInput('expiry', /\D/g, v => v.replace(/(\d{2})(\d)/, '$1 / $2').slice(0, 7));
+  formatInput('cvv', /\D/g, v => v.slice(0, 3));
+});
+</script>
+</body></html>

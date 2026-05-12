@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Where Every Sip Tells a Story — Coffies</title>
+<meta name="description" content="Coffies - Premium handcrafted coffee experience."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body data-page="index"><nav id="navbar">
+  <a href="index.html" class="logo-text">Coff<span>ies</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-page="index">Home</a></li>
+    <li><a href="menu.html" data-page="menu">Menu</a></li>
+    <li><a href="about.html" data-page="about">About</a></li>
+    <li><a href="gallery.html" data-page="gallery">Gallery</a></li>
+    <li><a href="contact.html" data-page="contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-nav-btn" onclick="openCart()" title="View Cart">🛒<span class="cart-badge" id="cartBadge">0</span></button>
+  </div>
+</nav>
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header"><h3>🛒 Your Order</h3><button class="cart-close" onclick="closeCart()">✕</button></div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty"><span class="cart-empty-icon">☕</span><p>Your cart is empty.<br/>Add some coffee to get started!</p></div>
+  </div>
+  <div class="cart-footer" id="cartFooter">
+    <div id="cartProgress" class="cart-shipping-msg"></div>
+    <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+    <div class="cart-subtotal"><span>Shipping</span><span id="cartShipping" style="color:#4caf50">Free</span></div>
+    <div class="cart-total"><span>Total</span><span class="cart-total-price" id="cartTotal">$0.00</span></div>
+    <button class="checkout-btn" onclick="window.location.href='checkout.html'">Proceed to Checkout →</button>
+  </div>
+</div>
+<div class="toast" id="toast"><div class="toast-icon">✓</div><span id="toastMsg"></span></div>
+
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1800&q=90')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Premium Specialty Coffee Since 2018</div>
+    <h1>Where Every Sip<br/><em>Tells a Story</em></h1>
+    <p class="hero-sub">We source the rarest beans from volcanic highlands, ancient rainforests, and sun-drenched estates — roasted to bring out flavors you never imagined.</p>
+    <div class="hero-btns">
+      <a href="menu.html" class="btn-gold">Explore Our Menu</a>
+      <a href="about.html" class="btn-outline">Our Story ↓</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num" data-target="12">0</span><span class="stat-label">Origins</span></div>
+    <div class="stat"><span class="stat-num" data-target="98">0</span><span class="stat-label">% Satisfaction</span></div>
+    <div class="stat"><span class="stat-num" data-target="50">0</span><span class="stat-label">K Happy Cups</span></div>
+  </div>
+  <div class="scroll-indicator"><div class="scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<div class="marquee-strip"><div class="marquee-inner">
+  <span class="marquee-item">Ethically Sourced</span><span class="marquee-item">Single Origin Blends</span>
+  <span class="marquee-item">Artisan Roasted</span><span class="marquee-item">Free Delivery Over $40</span>
+  <span class="marquee-item">100% Arabica Beans</span><span class="marquee-item">Carbon Neutral Roastery</span>
+  <span class="marquee-item">Ethically Sourced</span><span class="marquee-item">Single Origin Blends</span>
+  <span class="marquee-item">Artisan Roasted</span><span class="marquee-item">Free Delivery Over $40</span>
+  <span class="marquee-item">100% Arabica Beans</span><span class="marquee-item">Carbon Neutral Roastery</span>
+</div></div>
+
+<section class="featured">
+  <div class="featured-header">
+    <div>
+      <span class="section-label reveal">Our Signature Menu</span>
+      <h2 class="section-title reveal">Crafted For The<br/>Discerning Palate</h2>
+    </div>
+    <a href="menu.html" class="view-all reveal">View All Products →</a>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <div class="product-img"><img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=600&q=85" alt="Espresso Intenso" loading="lazy"/><div class="product-tag">Best Seller</div></div>
+      <div class="product-body">
+        <div class="product-name">Espresso Intenso</div>
+        <div class="product-origin">Ethiopian Yirgacheffe · Dark Roast</div>
+        <div class="product-bottom"><div class="product-price">$5.50</div>
+        <button class="cart-btn" onclick="addToCart('Espresso Intenso','Ethiopian Yirgacheffe · Dark Roast',5.50,'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=200&q=80',this)">+</button></div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img"><img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&q=85" alt="Velvet Latte" loading="lazy"/><div class="product-tag">Staff Pick</div></div>
+      <div class="product-body">
+        <div class="product-name">Velvet Latte</div>
+        <div class="product-origin">Colombian Huila · Medium Roast</div>
+        <div class="product-bottom"><div class="product-price">$6.00</div>
+        <button class="cart-btn" onclick="addToCart('Velvet Latte','Colombian Huila · Medium Roast',6.00,'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=200&q=80',this)">+</button></div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=85" alt="Cold Brew" loading="lazy"/><div class="product-tag">Summer Hit</div></div>
+      <div class="product-body">
+        <div class="product-name">Cold Brew Noir</div>
+        <div class="product-origin">Guatemala Antigua · Slow Steeped</div>
+        <div class="product-bottom"><div class="product-price">$6.50</div>
+        <button class="cart-btn" onclick="addToCart('Cold Brew Noir','Guatemala Antigua · Slow Steeped',6.50,'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=200&q=80',this)">+</button></div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img"><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600&q=85" alt="Premium Beans" loading="lazy"/><div class="product-tag">New Arrival</div></div>
+      <div class="product-body">
+        <div class="product-name">Reserve Whole Beans</div>
+        <div class="product-origin">Panama Geisha · Light Roast</div>
+        <div class="product-bottom"><div class="product-price">$18.00</div>
+        <button class="cart-btn" onclick="addToCart('Reserve Whole Beans','Panama Geisha · Light Roast',18.00,'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=200&q=80',this)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="experience">
+  <div class="exp-img reveal-left"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=900&q=85" alt="Coffee roasting"/></div>
+  <div class="exp-content reveal-right">
+    <span class="section-label">The Coffies Difference</span>
+    <h2 class="section-title">More Than Coffee —<br/>It's a Craft</h2>
+    <p class="section-sub">We obsess over every detail so you don't have to. From farm elevation to water temperature, we've perfected the science and art of exceptional coffee.</p>
+    <div class="exp-features">
+      <div class="exp-feature"><div class="exp-icon">🌱</div><div class="exp-feature-text"><strong>Ethically Sourced Beans</strong><span>Direct trade with 30+ sustainable farms across 12 countries</span></div></div>
+      <div class="exp-feature"><div class="exp-icon">🔥</div><div class="exp-feature-text"><strong>Small-Batch Roasting</strong><span>Roasted fresh weekly in our carbon-neutral roastery</span></div></div>
+      <div class="exp-feature"><div class="exp-icon">📦</div><div class="exp-feature-text"><strong>Same-Week Delivery</strong><span>From our roastery to your door within 72 hours of roasting</span></div></div>
+    </div>
+    <a href="about.html" class="btn-gold">Discover Our Process</a>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="cta-bg" style="background-image:url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1800&q=90')"></div>
+  <div class="cta-content reveal">
+    <h2>Get <span>25% Off</span><br/>Your First Order</h2>
+    <p>Join 50,000+ coffee lovers who get exclusive access to new releases, brewing guides, and member-only discounts.</p>
+    <div class="cta-form">
+      <input type="email" id="ctaEmail" placeholder="Enter your email address…"/>
+      <button onclick="claimOffer(this)">Claim Offer</button>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="section-center">
+    <span class="section-label reveal">Trusted by Coffee Lovers</span>
+    <h2 class="section-title reveal">What Our Community Is Saying</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-quote">"Coffies completely ruined every other coffee for me. Nothing compares to the depth of flavour in their Ethiopian blend."</p><div class="testi-author"><img class="testi-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="James"/><div><span class="testi-name">James Mitchell</span><span class="testi-loc">London, UK</span></div></div></div>
+    <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-quote">"The Cold Brew Noir is absolutely divine. Smooth, rich, zero bitterness. I get a bag every week and genuinely look forward to it."</p><div class="testi-author"><img class="testi-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Sarah"/><div><span class="testi-name">Sarah Kim</span><span class="testi-loc">New York, USA</span></div></div></div>
+    <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-quote">"Coffies is the first brand that actually delivers on every promise. The Panama Geisha is genuinely life-changing coffee."</p><div class="testi-author"><img class="testi-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Marco"/><div><span class="testi-name">Marco Romano</span><span class="testi-loc">Milan, Italy</span></div></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo-text">Coff<span>ies</span></a>
+      <p>Premium specialty coffee sourced from ethical farms. Roasted fresh and shipped within 72 hours of roasting.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#">f</a><a class="social-btn" href="#">in</a><a class="social-btn" href="#">tw</a><a class="social-btn" href="#">yt</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Shop</h4><ul>
+      <li><a href="menu.html">Espressos</a></li><li><a href="menu.html">Lattes</a></li>
+      <li><a href="menu.html">Cold Brews</a></li><li><a href="menu.html">Whole Beans</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="about.html">Our Story</a></li><li><a href="about.html">Sustainability</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul>
+      <li>📍 123 Roastery Lane</li><li>📞 +1 (555) 123-4567</li>
+      <li>✉️ hello@coffies.com</li><li>⏰ Mon–Sat 8am–6pm</li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 <span style="color:var(--gold)">Coffies</span>. All rights reserved.</span>
+    <span>Privacy · Terms · Cookies</span>
+  </div>
+</footer>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
