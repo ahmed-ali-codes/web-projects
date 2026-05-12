@@ -57,9 +57,9 @@ Portfolio Website: Coming Soon
 
 ## Connect With Me
 
-- GitHub: https://github.com/yourusername
-- Portfolio: https://yourportfolio.com
-- LinkedIn: https://linkedin.com/in/yourusername
+- GitHub: https://github.com/ahmed-ali-codes
+- Portfolio: https://ecotrustiasolutions/portfolio
+- LinkedIn: https://www.linkedin.com/in/ahmed-ali-jawad/
 
 ---
 
