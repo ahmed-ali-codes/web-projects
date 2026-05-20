@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Gym — Nitrogen Gym</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Montserrat:wght@300;400;700;900&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --teal: #ff1a24;
+      --teal-dim: rgba(255, 26, 36, 0.08);
+      --teal-border: rgba(255, 26, 36, 0.25);
+      --black: #000000;
+      --surface: #090909;
+      --surface2: rgba(255, 255, 255, 0.025);
+      --white: #ffffff;
+      --muted: rgba(255, 255, 255, 0.45);
+      --raj: 'Rajdhani', sans-serif;
+      --mon: 'Montserrat', sans-serif;
+    }
+
+    .nav-cta {
+      background: var(--teal);
+      color: #000;
+      font-family: var(--raj);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 10px 28px;
+      border: none;
+      cursor: pointer;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover {
+      opacity: 0.9;
+    }
+
+    .nav-social-top {
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      transition: color 0.3s, transform 0.3s;
+      margin-right: 15px;
+    }
+
+    .nav-social-top:hover {
+      color: var(--teal);
+      transform: translateY(-2px);
+    }
+
+    .nav-social-top svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+    }
+
+    /* ─── BURGER MENU ─── */
+    .burger {
+      display: none;
+      width: 30px;
+      height: 20px;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .burger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      padding: 20px;
+      overflow-y: auto;
+      z-index: 1000;
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+
+    .mobile-menu a {
+      font-family: var(--raj);
+      font-size: 31px;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+
+    .footer-links a:hover {
+      color: var(--teal);
+    }
+
+    /* ─── WHATSAPP FLOAT ─── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 64px;
+      height: 64px;
+      background: rgba(37, 211, 102, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(37, 211, 102, 0.1);
+    }
+
+    .whatsapp-float:hover {
+      background: #25D366;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+    }
+
+    .whatsapp-float img {
+      width: 32px;
+      height: 32px;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float:hover img {
+      filter: brightness(0) invert(1);
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--mon);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #000;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 26, 36, 0.3);
+    }
+
+    /* ─── UTILITY ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .eyebrow {
+      font-family: var(--raj);
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--teal);
+      opacity: 0.5;
+    }
+
+    .section-title {
+      font-family: var(--mon);
+      font-size: clamp(34px, 4vw, 58px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1.5px;
+      line-height: 0.93;
+      margin-bottom: 60px;
+    }
+
+    .section-title em {
+      font-style: normal;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255, 26, 36, 0.55);
+    }
+
+    section {
+      padding: 96px 60px;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      height: 120px;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 26, 36, 0.1);
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      line-height: 1;
+      position: relative;
+      margin-top: 25px;
+    }
+
+    .nav-logo-text {
+      font-family: var(--raj);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      color: var(--white);
+      position: absolute;
+      top: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .nav-logo-text span {
+      color: var(--teal);
+    }
+
+    .nav-logo-img {
+      height: 107px;
+      width: auto;
+      filter: drop-shadow(0 0 15px rgba(255, 26, 36, 0.4));
+      transform: translateX(-2px);
+      transition: transform 0.3s;
+    }
+
+    .nav-logo:hover .nav-logo-img {
+      transform: translateX(-2px) scale(1.1);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: var(--raj);
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--teal);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ─── GYM HERO ─── */
+    #gym-hero {
+      width: 100%;
+      aspect-ratio: 1536 / 1024;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 0 60px;
+      margin-top: 120px;
+      /* Offset for fixed nav */
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), #000), url('images/hero-our-gym.jpeg') center/cover no-repeat;
+    }
+
+    /* ─── FACILITIES GRID ─── */
+    .facilities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .fac-card {
+      background: var(--surface);
+      border: 1px solid var(--surface2);
+      padding: 40px;
+      transition: border-color 0.3s;
+    }
+
+    .fac-card:hover {
+      border-color: var(--teal-border);
+    }
+
+    .fac-icon {
+      font-size: 32px;
+      color: var(--teal);
+      margin-bottom: 20px;
+    }
+
+    .fac-name {
+      font-family: var(--raj);
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .fac-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 300px);
+      gap: 15px;
+    }
+
+    .gal-item {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gal-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+      filter: grayscale(0.5);
+    }
+
+    .gal-item:hover img {
+      transform: scale(1.1);
+      filter: grayscale(0);
+    }
+
+    .gal-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gal-item:nth-child(2) {
+      grid-column: span 2;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 44px 60px;
+      border-top: 1px solid rgba(255, 26, 36, 0.07);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: var(--raj);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .footer-logo span {
+      color: rgba(255, 26, 36, 0.45);
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-right: 18px;
+      border: 1px solid rgba(255, 26, 36, 0.25);
+      overflow: hidden;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    }
+
+    .lang-btn {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.4);
+      font-family: var(--raj);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .lang-btn:first-child {
+      border-right: 1px solid rgba(255, 26, 36, 0.15);
+    }
+
+    .lang-btn.active {
+      background: rgba(255, 26, 36, 0.15);
+      color: var(--teal);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .lang-btn .lang-label-ar {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0;
+    }
+
+    #google_translate_element {
+      position: absolute;
+      top: -9999px; left: -9999px; opacity: 0; pointer-events: none; height: 0; overflow: hidden;
+    }
+    .goog-te-banner-frame, .skiptranslate, #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+    body { top: 0 !important; }
+    .goog-text-highlight { background: none !important; box-shadow: none !important; }
+
+    /* ─── RTL OVERRIDES (Arabic) ─── */
+    [dir="rtl"] .mobile-menu a {
+      font-size: 27px;
+      letter-spacing: 0;
+    }
+
+    [dir="rtl"] nav {
+      direction: ltr;
+    }
+
+    [dir="rtl"] nav .nav-links,
+    [dir="rtl"] nav .nav-actions {
+      direction: rtl;
+    }
+
+    [dir="rtl"] .nav-cta {
+      margin-left: 15px;
+    }
+
+    [dir="rtl"] .nav-social-top {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+
+    [dir="rtl"] .lang-switcher {
+      margin-right: 0;
+      margin-left: 0;
+    }
+
+    [dir="rtl"] .section-title,
+    [dir="rtl"] .eyebrow {
+      text-align: right;
+    }
+
+    [dir="rtl"] .eyebrow {
+      flex-direction: row-reverse;
+    }
+
+    [dir="rtl"] footer {
+      direction: ltr;
+    }
+
+    @media (max-width: 1400px) {
+
+      section,
+      nav,
+      footer {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      section {
+        padding: 80px 30px;
+      }
+
+      nav {
+        padding: 0 30px;
+        height: 100px;
+      }
+
+      .facilities-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        height: 90px;
+        padding: 0 20px;
+      }
+
+      .nav-logo {
+        margin-top: 20px;
+      }
+
+      .nav-logo-img {
+        height: 77px;
+      }
+
+      .nav-logo-text {
+        font-size: 11px;
+        top: -7px;
+        letter-spacing: 4px;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-social-top {
+        display: flex;
+        margin-right: 15px;
+      }
+
+      .lang-switcher {
+        margin-right: 15px;
+      }
+
+      .lang-btn {
+        padding: 6px 10px;
+        font-size: 9px;
+      }
+
+      .nav-actions {
+        gap: 0;
+      }
+
+      /* Mobile RTL spacing & order */
+      [dir="rtl"] .nav-actions {
+        gap: 15px;
+      }
+
+      [dir="rtl"] .nav-social-top {
+        margin: 0;
+        order: 0;
+      }
+
+      [dir="rtl"] .lang-switcher {
+        margin: 0;
+        order: 1;
+      }
+
+      [dir="rtl"] .burger {
+        margin: 0;
+        order: -1;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      #gym-hero {
+        padding: 0 20px;
+        aspect-ratio: 4 / 5;
+        margin-top: 90px;
+      }
+
+      .burger.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+        background: var(--teal);
+      }
+
+      .burger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .burger.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+        background: var(--teal);
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gal-item {
+        height: 300px;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .whatsapp-float {
+        width: 54px;
+        height: 54px;
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .whatsapp-float img {
+        width: 26px;
+        height: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="nitrogen-gym.html" class="nav-logo">
+      <div class="nav-logo-text">NITRO<span>GEN</span></div>
+      <img src="images/Bold winged warrior logo design.png" alt="Nitrogen Warrior" class="nav-logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="nitrogen-gym.html">Home</a></li>
+      <li><a href="about.html">About us</a></li>
+      <li><a href="gym.html">Our gym</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="contact.html">Contact us</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang-switcher" id="langSwitcher">
+        <button class="lang-btn active" data-lang="en" id="btnEN">EN</button>
+        <button class="lang-btn" data-lang="ar" id="btnAR"><span class="lang-label-ar">عربي</span></button>
+      </div>
+      <a href="https://www.instagram.com/nitrogen_club" target="_blank" class="nav-social-top"
+        title="Follow us on Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+      <button class="nav-cta" onclick="window.location.href='membership.html'">Join Now</button>
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- Hidden Google Translate Element -->
+  <div id="google_translate_element"></div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="nitrogen-gym.html">Home</a>
+    <a href="about.html">About us</a>
+    <a href="gym.html">Our gym</a>
+    <a href="membership.html">Membership</a>
+    <a href="contact.html">Contact us</a>
+    <div class="lang-switcher" style="margin: 20px 0 0; border-color: rgba(255,26,36,0.35);">
+      <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
+      <button class="lang-btn" data-lang="ar" onclick="switchLang('ar')"><span class="lang-label-ar">عربي</span></button>
+    </div>
+    <button class="nav-cta" style="display:block; margin-top:20px;"
+      onclick="window.location.href='membership.html'">Join Now</button>
+  </div>
+
+  <section id="gym-hero">
+    <div class="hero-bg"></div>
+    <div style="position:relative; z-index:2;">
+      <p class="eyebrow">The Facility</p>
+      <h1 class="section-title" style="color:#fff;">The Performance <em>Lab.</em></h1>
+    </div>
+  </section>
+
+  <section id="facilities">
+    <div class="facilities-grid">
+      <div class="fac-card reveal">
+        <div class="fac-icon">01</div>
+        <h3 class="fac-name">The Iron Room</h3>
+        <p class="fac-desc">Equipped with 12 Rogue power racks, competition-grade barbells, and over 5,000 lbs of Eleiko
+          calibrated plates.</p>
+      </div>
+
+      <div class="fac-card reveal">
+        <div class="fac-icon">02</div>
+        <h3 class="fac-name">High-O2 Cardio</h3>
+        <p class="fac-desc">Curated selection of Concept2 rowers, SkiErgs, and Assault Bikes in a climate-controlled,
+          oxygen-enriched zone.</p>
+      </div>
+      <div class="fac-card reveal">
+        <div class="fac-icon">03</div>
+        <h3 class="fac-name">The Sprint Track</h3>
+        <p class="fac-desc">40-meter indoor turf track for explosive power drills, sled pushes, and acceleration
+          training.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery-sec" style="background:#050505;">
+    <p class="eyebrow reveal">Visual Tour</p>
+    <h2 class="section-title reveal">Built for <em>Intensity.</em></h2>
+    <div class="gallery">
+      <div class="gal-item reveal"><img src="images/gym-image-1.jpeg" alt="Gym 1"></div>
+      <div class="gal-item reveal"><img src="images/gym-image-2.jpeg" alt="Gym 2"></div>
+      <div class="gal-item reveal"><img src="images/gym-image-3.jpeg" alt="Gym 3"></div>
+      <div class="gal-item reveal"><img src="images/gym-image-4.jpeg" alt="Gym 4"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">NITRO<span>GEN</span></div>
+    <p class="footer-copy">© 2026 Nitrogen Gym — All rights reserved</p>
+    <ul class="footer-links">
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://www.instagram.com/nitrogen_club" target="_blank">Instagram</a></li>
+    </ul>
+  </footer>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/971501234567" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+    <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp Chat">
+  </a>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => obs.observe(el));
+
+    // Mobile Menu Toggle
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = burger.classList.contains('active') ? 'hidden' : '';
+    });
+    // Close on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').style.background =
+        window.scrollY > 50 ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.85)';
+    });
+
+    /* ── GOOGLE TRANSLATE INIT ── */
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'ar',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+
+    /* ── LANGUAGE SWITCHER LOGIC ── */
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      if (lang === 'ar') {
+        triggerGoogleTranslate('ar');
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'ar');
+      } else {
+        restoreEnglish();
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+      }
+    }
+
+    function triggerGoogleTranslate(lang) {
+      const interval = setInterval(() => {
+        const select = document.querySelector('.goog-te-combo');
+        if (select) {
+          select.value = lang;
+          select.dispatchEvent(new Event('change'));
+          clearInterval(interval);
+        }
+      }, 100);
+      setTimeout(() => clearInterval(interval), 5000);
+    }
+
+    function restoreEnglish() {
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + window.location.hostname;
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + window.location.hostname;
+      
+      const select = document.querySelector('.goog-te-combo');
+      if (select) {
+        select.value = 'en';
+        select.dispatchEvent(new Event('change'));
+        setTimeout(() => {
+          if (document.cookie.includes('googtrans=/en/ar') || document.querySelector('html.translated-rtl, html.translated-ltr')) {
+            window.location.reload();
+          }
+        }, 500);
+      } else {
+        window.location.reload();
+      }
+    }
+
+    document.getElementById('langSwitcher')?.addEventListener('click', (e) => {
+      const btn = e.target.closest('.lang-btn');
+      if (!btn) return;
+      switchLang(btn.dataset.lang);
+    });
+
+    window.addEventListener('load', () => {
+      if (document.cookie.includes('googtrans=/en/ar')) {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.lang === 'ar');
+        });
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'ar');
+      }
+    });
+
+  </script>
+
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>
