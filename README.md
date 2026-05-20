@@ -1,66 +1,26 @@
-# web-projects
+# Web Projects — Ecotrustia Solutions
 
-A growing collection of modern, responsive, and fully functional website templates built to improve creativity, frontend skills, and real-world client work.
+A collection of responsive, production-ready websites built 
+for real clients and portfolio demonstration.
 
 ## About
-
-This repository contains daily website design and frontend development projects including landing pages, business websites, portfolios, SaaS interfaces, and modern UI concepts.
-
-The goal of this project is to:
-- Build consistently
-- Improve frontend development skills
-- Create production-ready templates
-- Maintain a strong public portfolio
-- Showcase real client-style work
+This repository includes landing pages, business websites, 
+SaaS interfaces, and modern UI concepts — ranging from 
+actual client deliverables to original showcase builds.
 
 ## Tech Stack
-
-- HTML5
-- CSS3
-- JavaScript
-- React
-- Next.js
-- Tailwind CSS
-- Framer Motion
+HTML5 · CSS3 · JavaScript · Tailwind CSS · PHP · MySQL
 
 ## Projects
+| Project | Type | Live URL |
+|---------|------|----------|
+| Al Ensaf Car Towing | Real Client | alensafcartowingservices.com |
+| Swash Water Purification | Real Client | swashwater.ae |
+| RT Welfare & Donations | Real Client | rtwelfareanddonations.com |
+| Restaurant Landing Page | Portfolio Demo | Coming Soon |
+| SaaS Startup UI | Portfolio Demo | Coming Soon |
 
-| Project | Live Demo | Source Code |
-|---------|------------|-------------|
-| Restaurant Landing Page | Coming Soon | Available |
-| SaaS Startup Website | Coming Soon | Available |
-| Gym Fitness Website | Coming Soon | Available |
-| Portfolio Website | Coming Soon | Available |
-
-> New templates are added regularly.
-
-## Features
-
-- Responsive Design
-- Modern UI/UX
-- Mobile Friendly
-- Clean Code Structure
-- Reusable Components
-- Fast Performance
-- SEO Friendly
-
-## Goals
-
-- Upload new templates consistently
-- Build a professional frontend portfolio
-- Work on real-world layouts and animations
-- Learn advanced UI systems and interactions
-
-## Live Portfolio
-
-Portfolio Website: Coming Soon
-
-## Connect With Me
-
+## Connect
+- Portfolio: https://ecotrustia-solutions.vercel.app
+- LinkedIn: https://linkedin.com/in/ahmed-ali-jawad
 - GitHub: https://github.com/ahmed-ali-codes
-- Portfolio: https://ecotrustiasolutions/portfolio
-- LinkedIn: https://www.linkedin.com/in/ahmed-ali-jawad/
-
----
-
-⭐ If you like this project, feel free to star the repository.
