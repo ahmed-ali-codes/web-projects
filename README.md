@@ -1,4 +1,4 @@
-# Daily Web Templates
+# web-projects
 
 A growing collection of modern, responsive, and fully functional website templates built to improve creativity, frontend skills, and real-world client work.
 
