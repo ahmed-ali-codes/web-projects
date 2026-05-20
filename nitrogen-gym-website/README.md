@@ -8,8 +8,8 @@
 
 A modern, responsive, and bilingual (English/Arabic) static website for **Nitrogen Gym** – a premium fitness brand that blends high-intensity training with elite recovery technology.
 
-![Nitrogen Gym Preview](https://via.placeholder.com/1200x630?text=Nitrogen+Gym+Screenshot)  
-*(Add actual screenshot here)*
+![Nitrogen Gym Preview]([https://via.placeholder.com](http://naturasya.shop/nitrogen-gym.html)/1200x630?text=Nitrogen+Gym+Screenshot)  
+<img width="3420" height="1718" alt="9E6E1BC1-6E68-4467-8840-304FD5247CD3" src="https://github.com/user-attachments/assets/78782a8c-9ff1-4d13-a581-939b5f23fb79" />
 
 ---
 
