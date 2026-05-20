@@ -7,7 +7,10 @@
 
 **CryptoSecure** is a modern, responsive landing page for a fictional crypto investment platform. It features immersive 3D animations built with Three.js, a futuristic design, and smooth scroll navigation – ideal for showcasing a crypto startup or as a front‑end portfolio piece.
 
-![Hero Screenshot](assets/images/screenshot-hero.png)
+![Hero Screenshot]
+
+<img width="3420" height="2044" alt="FBAEA579-F213-4CA6-806C-83B99AEC4A71" src="https://github.com/user-attachments/assets/9dafec36-7b21-49d0-8203-a9e4c9783e54" />
+
 
 ---
 
