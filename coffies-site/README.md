@@ -11,7 +11,10 @@
 
 **Coffies** is a fully responsive, front‑end e‑commerce website for a premium coffee brand. It features a rich user interface with a hero section, product catalogue, interactive cart drawer, smooth animations, and a multi‑step checkout. All cart data persists via `localStorage`, and an integrated mock API simulates order placement – ideal for demonstrating modern front‑end development skills.
 
-> **Live Demo:** (Add your deployment link here – Netlify, Vercel, or GitHub Pages)
+> **Live Demo:** 
+
+<img width="3420" height="2040" alt="D40F0B09-1289-4314-A1D3-C6F0C7D172C0" src="https://github.com/user-attachments/assets/a6bdcb69-e380-4ad5-9f01-ab3cdbc7078c" />
+
 
 ---
 
