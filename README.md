@@ -1,23 +1,3 @@
-# Web Projects — Ecotrustia Solutions
-
-A collection of responsive, production-ready websites built 
-for real clients and portfolio demonstration.
-
-## About
-This repository includes landing pages, business websites, 
-SaaS interfaces, and modern UI concepts — ranging from 
-actual client deliverables to original showcase builds.
-
-## Tech Stack
-HTML5 · CSS3 · JavaScript · Tailwind CSS · PHP · MySQL
-
-## Connect
-- Portfolio: https://ecotrustia-solutions.vercel.app
-- LinkedIn: https://linkedin.com/in/ahmed-ali-jawad
-- GitHub: https://github.com/ahmed-ali-codes
-
-
-
 # 🌐 Web Projects — Ecotrustia Solutions
 
 A curated collection of responsive, production-ready websites — ranging from real client deliverables to original portfolio builds. Each project is crafted with clean code, modern design, and a focus on user experience.
