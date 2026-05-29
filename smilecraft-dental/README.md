@@ -43,7 +43,7 @@ smilecraft/
 ├── images/                 # Optimized graphic assets and icons
 ├── js/
 │   └── script.js           # Interactive components and DOM manipulation
-├── smilecraft.html         # Main entry point / Home Page
+├── index.html              # Main entry point / Home Page
 ├── .gitignore              # Ignored files for Git version control
 └── README.md               # Project documentation
 ```
@@ -67,7 +67,7 @@ You only need a modern web browser (e.g., Chrome, Firefox, Safari) to view this 
    cd smilecraft
    ```
 3. **Run the project:**
-   Simply open `smilecraft.html` in your preferred web browser. Alternatively, if you use VS Code, you can use the [Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) for hot-reloading.
+   Simply open `index.html` in your preferred web browser. Alternatively, if you use VS Code, you can use the [Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) for hot-reloading.
 
 ## 📬 Contact & Support
 
