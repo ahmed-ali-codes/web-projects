@@ -458,7 +458,9 @@
       background: #fff;
       padding: 24px 20px;
       transition: background .2s;
-      cursor: pointer
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
     }
 
     .service-card:hover {
@@ -504,7 +506,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all .2s
+      transition: all .2s;
+      margin-top: auto;
     }
 
     .service-card:hover .service-arrow {
