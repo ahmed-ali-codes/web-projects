@@ -1,5 +1,4 @@
 <div align="center">
-  <img src="images/logo-icon.svg" alt="SmileCraft Logo" width="80" height="80">
   <h1>SmileCraft Dental Care</h1>
   <p>A modern, highly responsive, and beautifully designed static website for a premium dental clinic based in Dubai.</p>
 
@@ -16,6 +15,8 @@
 ## 📖 Overview
 
 **SmileCraft** is a state-of-the-art frontend web interface crafted for dental clinics. Built with modern UI/UX principles, it provides an intuitive experience for patients to explore services, learn about the medical team, see real before-and-after results, and seamlessly book appointments.
+
+<img width="3420" height="2046" alt="6BF8099E-4B01-41D0-AAC9-DD20B6E96457" src="https://github.com/user-attachments/assets/28a56839-f3a4-4755-a32c-3d06fa4c8b69" />
 
 ## ✨ Key Features
 
